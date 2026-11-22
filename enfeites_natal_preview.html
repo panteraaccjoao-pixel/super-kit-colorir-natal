@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; padding: 0 !important; }
+      .sheet-container { border: none !important; box-shadow: none !important; margin: 0 !important; }
+    }
+    .bobbie-stroke {
+      stroke: #1e293b;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .cut-line {
+      stroke: #94a3b8;
+      stroke-width: 1.8;
+      stroke-dasharray: 6 4;
+      stroke-linecap: round;
+    }
+  </style>
+</head>
+<body class="bg-transparent text-[var(--foreground)] antialiased p-0 m-0">
+  <div class="py-2 space-y-4 max-w-4xl mx-auto">
+    
+    <!-- Controls Toolbar (Interactive Mode Toggle) -->
+    <div class="no-print flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-xs">
+      <div class="flex items-center gap-2">
+        <span class="text-base">✂️</span>
+        <span class="font-bold text-slate-800 text-sm">Folha de Moldes: Enfeites de Árvore Bobbie Goods</span>
+        <span class="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full">Pronto para Imprimir</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="btn-bw" onclick="setMode('bw')" class="px-3 py-1.5 rounded-lg font-bold border transition-all bg-emerald-600 text-white border-emerald-600 shadow-sm">
+          ✏️ Preto & Branco (Pintar)
+        </button>
+        <button id="btn-colored" onclick="setMode('colored')" class="px-3 py-1.5 rounded-lg font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition-all">
+          🎨 Ver Colorido (Exemplo)
+        </button>
+        <button onclick="window.print()" class="px-3 py-1.5 rounded-lg font-bold bg-slate-800 hover:bg-slate-900 text-white transition-all flex items-center gap-1.5">
+          🖨️ Imprimir
+        </button>
+      </div>
+    </div>
+
+    <!-- Printable A4 Sheet Simulator -->
+    <div class="sheet-container bg-white p-6 sm:p-8 rounded-2xl border-2 border-dashed border-slate-300 shadow-md mx-auto max-w-2xl">
+      
+      <!-- Sheet Header -->
+      <div class="text-center pb-4 mb-6 border-b border-slate-100">
+        <div class="inline-block bg-red-100 text-red-700 text-[10px] font-black uppercase tracking-widest px-3 py-0.5 rounded-full mb-1">
+          OFICINA DE NATAL BOBBIE GOODS • FOLHA DE RECORTE 01
+        </div>
+        <h2 class="text-lg font-black text-slate-800 uppercase tracking-tight">Enfeites Fofos para Árvore de Natal</h2>
+        <p class="text-[11px] text-slate-500 font-medium">Instruções: 1. Pinte com capricho • 2. Recorte na linha pontilhada • 3. Fure no círculo superior e passe uma fita para pendurar!</p>
+      </div>
+
+      <!-- 2x2 Grid of Ornaments -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 place-items-center">
+
+        <!-- Enfeite 1: Bola do Ursinho Natalino -->
+        <div class="flex flex-col items-center">
+          <svg width="220" height="250" viewBox="0 0 220 250" class="overflow-visible">
+            <!-- Cut Guide Border -->
+            <rect x="5" y="5" width="210" height="240" rx="28" fill="#f8fafc" class="cut-line" />
+            <text x="15" y="24" fill="#94a3b8" font-size="9" font-weight="bold">✂ Recortar</text>
+
+            <!-- Hanging Loop & Hole -->
+            <rect x="94" y="30" width="32" height="18" rx="4" fill="var(--ornament-cap, #ffffff)" class="bobbie-stroke" />
+            <circle cx="110" cy="22" r="12" fill="none" class="bobbie-stroke" />
+            <circle cx="110" cy="22" r="4" fill="#cbd5e1" class="bobbie-stroke" />
+            <text x="110" y="10" text-anchor="middle" fill="#64748b" font-size="8" font-weight="bold">⚪ Fure aqui</text>
+
+            <!-- Main Bauble Circle -->
+            <circle cx="110" cy="138" r="82" fill="var(--bauble-bg, #ffffff)" class="bobbie-stroke" />
+
+            <!-- Bobbie Bear Inside -->
+            <!-- Bear Head -->
+            <circle cx="110" cy="148" r="44" fill="var(--bear-body, #ffffff)" class="bobbie-stroke" />
+            
+            <!-- Bear Ears -->
+            <circle cx="78" cy="116" r="14" fill="var(--bear-body, #ffffff)" class="bobbie-stroke" />
+            <circle cx="78" cy="116" r="7" fill="var(--bear-inner-ear, #ffffff)" class="bobbie-stroke" />
+            <circle cx="142" cy="116" r="14" fill="var(--bear-body, #ffffff)" class="bobbie-stroke" />
+            <circle cx="142" cy="116" r="7" fill="var(--bear-inner-ear, #ffffff)" class="bobbie-stroke" />
+
+            <!-- Santa Hat on Bear -->
+            <path d="M 80 120 Q 110 98 140 120 C 140 120 135 110 110 88 C 85 110 80 120 80 120 Z" fill="var(--santa-hat, #ffffff)" class="bobbie-stroke" />
+            <rect x="76" y="116" width="68" height="12" rx="6" fill="var(--hat-fur, #ffffff)" class="bobbie-stroke" />
+            <circle cx="110" cy="85" r="9" fill="var(--hat-fur, #ffffff)" class="bobbie-stroke" />
+
+            <!-- Bear Face -->
+            <!-- Eyes -->
+            <ellipse cx="96" cy="144" rx="4" ry="5.5" fill="#1e293b" />
+            <ellipse cx="124" cy="144" rx="4" ry="5.5" fill="#1e293b" />
+            <circle cx="98" cy="142" r="1.5" fill="#ffffff" />
+            <circle cx="126" cy="142" r="1.5" fill="#ffffff" />
+            <!-- Cheeks -->
+            <circle cx="88" cy="152" r="6" fill="var(--cheeks, #ffffff)" opacity="0.8" />
+            <circle cx="132" cy="152" r="6" fill="var(--cheeks, #ffffff)" opacity="0.8" />
+            <!-- Snout & Nose -->
+            <ellipse cx="110" cy="152" rx="12" ry="9" fill="var(--snout, #ffffff)" class="bobbie-stroke" />
+            <ellipse cx="110" cy="148" rx="5" ry="3.5" fill="#1e293b" />
+            <path d="M 110 152 L 110 156 Q 106 159 104 158 M 110 156 Q 114 159 116 158" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+
+            <!-- Little Paws holding candy cane -->
+            <path d="M 98 165 C 102 160 118 160 122 165 C 122 175 98 175 98 165 Z" fill="var(--bear-body, #ffffff)" class="bobbie-stroke" />
+            
+            <!-- Mini Snowflakes in Bauble -->
+            <text x="60" y="105" fill="#1e293b" font-size="12" font-weight="bold">❄</text>
+            <text x="156" y="105" fill="#1e293b" font-size="12" font-weight="bold">✦</text>
+            <text x="50" y="165" fill="#1e293b" font-size="10">✦</text>
+            <text x="165" y="165" fill="#1e293b" font-size="12">❄</text>
+          </svg>
+          <span class="mt-1 text-[11px] font-bold text-slate-600">1. Bola do Ursinho de Natal</span>
+        </div>
+
+        <!-- Enfeite 2: Estrela Kawaii com Gorrinho -->
+        <div class="flex flex-col items-center">
+          <svg width="220" height="250" viewBox="0 0 220 250" class="overflow-visible">
+            <!-- Cut Guide Border -->
+            <rect x="5" y="5" width="210" height="240" rx="28" fill="#f8fafc" class="cut-line" />
+            <text x="15" y="24" fill="#94a3b8" font-size="9" font-weight="bold">✂ Recortar</text>
+
+            <!-- Hanging Loop -->
+            <circle cx="110" cy="22" r="12" fill="none" class="bobbie-stroke" />
+            <circle cx="110" cy="22" r="4" fill="#cbd5e1" class="bobbie-stroke" />
+            <text x="110" y="10" text-anchor="middle" fill="#64748b" font-size="8" font-weight="bold">⚪ Fure aqui</text>
+
+            <!-- Star Shape (Chubby Bobbie Style) -->
+            <path d="M 110 40 
+                     L 126 82 
+                     L 170 86 
+                     L 136 116 
+                     L 146 160 
+                     L 110 136 
+                     L 74 160 
+                     L 84 116 
+                     L 50 86 
+                     L 94 82 Z" 
+                  fill="var(--star-bg, #ffffff)" 
+                  class="bobbie-stroke" 
+                  stroke-linejoin="round" />
+
+            <!-- Smiling Kawaii Face -->
+            <path d="M 94 112 Q 100 118 106 112" fill="none" class="bobbie-stroke" stroke-width="3" />
+            <path d="M 114 112 Q 120 118 126 112" fill="none" class="bobbie-stroke" stroke-width="3" />
+            <!-- Cheeks -->
+            <circle cx="88" cy="118" r="6" fill="var(--cheeks, #ffffff)" opacity="0.8" />
+            <circle cx="132" cy="118" r="6" fill="var(--cheeks, #ffffff)" opacity="0.8" />
+            <!-- Happy Mouth -->
+            <path d="M 106 122 Q 110 128 114 122" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+
+            <!-- Little Holly Berry Bow on Top -->
+            <circle cx="110" cy="46" r="5" fill="var(--berry, #ffffff)" class="bobbie-stroke" stroke-width="2" />
+            <circle cx="104" cy="50" r="5" fill="var(--berry, #ffffff)" class="bobbie-stroke" stroke-width="2" />
+            <circle cx="116" cy="50" r="5" fill="var(--berry, #ffffff)" class="bobbie-stroke" stroke-width="2" />
+
+            <!-- Star Decorative Dots -->
+            <circle cx="70" cy="180" r="3" fill="#cbd5e1" />
+            <circle cx="150" cy="180" r="3" fill="#cbd5e1" />
+            <text x="110" y="195" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="bold">✨ Brilha na Árvore</text>
+          </svg>
+          <span class="mt-1 text-[11px] font-bold text-slate-600">2. Estrela Mágica de Belém</span>
+        </div>
+
+        <!-- Enfeite 3: Biscoito de Gengibre (Gingerbread) -->
+        <div class="flex flex-col items-center">
+          <svg width="220" height="250" viewBox="0 0 220 250" class="overflow-visible">
+            <!-- Cut Guide Border -->
+            <rect x="5" y="5" width="210" height="240" rx="28" fill="#f8fafc" class="cut-line" />
+            <text x="15" y="24" fill="#94a3b8" font-size="9" font-weight="bold">✂ Recortar</text>
+
+            <!-- Hanging Loop -->
+            <circle cx="110" cy="22" r="12" fill="none" class="bobbie-stroke" />
+            <circle cx="110" cy="22" r="4" fill="#cbd5e1" class="bobbie-stroke" />
+            <text x="110" y="10" text-anchor="middle" fill="#64748b" font-size="8" font-weight="bold">⚪ Fure aqui</text>
+
+            <!-- Gingerbread Outline -->
+            <path d="M 110 38 
+                     C 130 38 138 52 138 68 
+                     C 138 80 130 88 126 92
+                     C 136 94 165 102 165 116
+                     C 165 128 152 130 142 124
+                     L 132 118
+                     L 134 148
+                     C 134 156 150 186 142 198
+                     C 134 206 122 202 118 190
+                     L 110 168
+                     L 102 190
+                     C 98 202 86 206 78 198
+                     C 70 186 86 156 86 148
+                     L 88 118
+                     L 78 124
+                     C 68 130 55 128 55 116
+                     C 55 102 84 94 94 92
+                     C 90 88 82 80 82 68
+                     C 82 52 90 38 110 38 Z"
+                  fill="var(--ginger-body, #ffffff)" 
+                  class="bobbie-stroke" />
+
+            <!-- Icing Details (Glacê) -->
+            <!-- Head Icing Waves -->
+            <path d="M 96 48 Q 110 42 124 48" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+            <!-- Eyes -->
+            <circle cx="102" cy="65" r="4" fill="#1e293b" />
+            <circle cx="118" cy="65" r="4" fill="#1e293b" />
+            <!-- Big Smile -->
+            <path d="M 102 75 Q 110 84 118 75" fill="none" class="bobbie-stroke" stroke-width="3" />
+            <!-- Bowtie -->
+            <path d="M 102 94 L 118 102 L 118 94 L 102 102 Z" fill="var(--bowtie, #ffffff)" class="bobbie-stroke" stroke-width="2" />
+            <circle cx="110" cy="98" r="3" fill="var(--bowtie, #ffffff)" class="bobbie-stroke" stroke-width="2" />
+            <!-- Cherry Gumdrop Buttons -->
+            <circle cx="110" cy="120" r="5" fill="var(--gumdrop1, #ffffff)" class="bobbie-stroke" stroke-width="2.5" />
+            <circle cx="110" cy="138" r="5" fill="var(--gumdrop2, #ffffff)" class="bobbie-stroke" stroke-width="2.5" />
+            <!-- Arm and Leg Waves -->
+            <path d="M 148 118 Q 154 122 158 116" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+            <path d="M 72 118 Q 66 122 62 116" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+            <path d="M 86 186 Q 92 190 98 186" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+            <path d="M 122 186 Q 128 190 134 186" fill="none" class="bobbie-stroke" stroke-width="2.5" />
+          </svg>
+          <span class="mt-1 text-[11px] font-bold text-slate-600">3. Biscoito Gingerbread Man</span>
+        </div>
+
+        <!-- Enfeite 4: Botinha do Gatinho Bobbie Goods -->
+        <div class="flex flex-col items-center">
+          <svg width="220" height="250" viewBox="0 0 220 250" class="overflow-visible">
+            <!-- Cut Guide Border -->
+            <rect x="5" y="5" width="210" height="240" rx="28" fill="#f8fafc" class="cut-line" />
+            <text x="15" y="24" fill="#94a3b8" font-size="9" font-weight="bold">✂ Recortar</text>
+
+            <!-- Hanging Loop -->
+            <circle cx="110" cy="22" r="12" fill="none" class="bobbie-stroke" />
+            <circle cx="110" cy="22" r="4" fill="#cbd5e1" class="bobbie-stroke" />
+            <text x="110" y="10" text-anchor="middle" fill="#64748b" font-size="8" font-weight="bold">⚪ Fure aqui</text>
+
+            <!-- Kitty peeking over cuff -->
+            <!-- Kitty Ears -->
+            <polygon points="80,56 94,40 102,56" fill="var(--cat-body, #ffffff)" class="bobbie-stroke" />
+            <polygon points="84,54 94,44 98,54" fill="var(--cheeks, #ffffff)" />
+            <polygon points="120,56 128,40 142,56" fill="var(--cat-body, #ffffff)" class="bobbie-stroke" />
+            <polygon points="124,54 128,44 138,54" fill="var(--cheeks, #ffffff)" />
+            <!-- Kitty Head -->
+            <path d="M 80 64 C 80 50 142 50 142 64 C 142 78 80 78 80 64 Z" fill="var(--cat-body, #ffffff)" class="bobbie-stroke" />
+            <!-- Eyes & Nose -->
+            <ellipse cx="98" cy="62" rx="3" ry="4" fill="#1e293b" />
+            <ellipse cx="124" cy="62" rx="3" ry="4" fill="#1e293b" />
+            <polygon points="110,65 113,68 107,68" fill="#f43f5e" />
+            <!-- Whiskers -->
+            <line x1="84" y1="64" x2="72" y2="62" class="bobbie-stroke" stroke-width="1.8" />
+            <line x1="84" y1="67" x2="72" y2="69" class="bobbie-stroke" stroke-width="1.8" />
+            <line x1="138" y1="64" x2="150" y2="62" class="bobbie-stroke" stroke-width="1.8" />
+            <line x1="138" y1="67" x2="150" y2="69" class="bobbie-stroke" stroke-width="1.8" />
+            
+            <!-- Fluffy Stocking Cuff (Gola de Pelúcia) -->
+            <rect x="70" y="74" width="82" height="24" rx="12" fill="var(--hat-fur, #ffffff)" class="bobbie-stroke" />
+            
+            <!-- Paws resting on cuff -->
+            <ellipse cx="92" cy="74" rx="8" ry="6" fill="var(--cat-body, #ffffff)" class="bobbie-stroke" />
+            <ellipse cx="130" cy="74" rx="8" ry="6" fill="var(--cat-body, #ffffff)" class="bobbie-stroke" />
+
+            <!-- Stocking Boot Body -->
+            <path d="M 82 96 
+                     L 82 148 
+                     C 82 178 70 190 92 195
+                     C 120 200 155 195 155 165
+                     C 155 150 138 140 138 128
+                     L 138 96 Z"
+                  fill="var(--stocking-bg, #ffffff)"
+                  class="bobbie-stroke" />
+
+            <!-- Stocking Heel & Toe Patches -->
+            <path d="M 82 148 C 95 148 102 165 92 185 C 84 175 82 160 82 148 Z" fill="var(--stocking-patch, #ffffff)" class="bobbie-stroke" />
+            <path d="M 135 152 C 145 155 155 162 152 170 C 142 185 125 188 120 185 Z" fill="var(--stocking-patch, #ffffff)" class="bobbie-stroke" />
+            
+            <!-- Candy Cane peaking from stocking -->
+            <path d="M 140 85 C 140 60 162 60 162 75 L 162 90" fill="none" class="bobbie-stroke" stroke-width="5" />
+          </svg>
+          <span class="mt-1 text-[11px] font-bold text-slate-600">4. Botinha do Gatinho de Natal</span>
+        </div>
+
+      </div>
+
+      <!-- Sheet Footer Info -->
+      <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between text-[10px] text-slate-400 font-medium">
+        <span>🎄 Coleção Oficial Livro de Colorir de Natal • Bobbie Goods</span>
+        <span>Recomendação: Imprimir em papel offset 180g ou colar em cartolina</span>
+      </div>
+
+    </div>
+
+    <!-- Explanation Box for the User -->
+    <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950 space-y-1.5">
+      <div class="font-extrabold flex items-center gap-1.5 text-emerald-900">
+        <span>💡</span>
+        <span>Como esse material é entregue ao seu cliente:</span>
+      </div>
+      <p>
+        O cliente recebe um <strong>PDF com mais de 30 moldes em alta resolução</strong> organizados em folhas A4 como esta acima. Os traços são grossos e arredondados no estilo <em>Bobbie Goods</em> para que qualquer criança consiga pintar sem borrar, recortar na linha pontilhada e pendurar na árvore de Natal da família usando barbante ou fitinha!
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    function setMode(mode) {
+      const root = document.documentElement;
+      const btnBw = document.getElementById('btn-bw');
+      const btnColored = document.getElementById('btn-colored');
+
+      if (mode === 'colored') {
+        root.style.setProperty('--bauble-bg', '#fee2e2');
+        root.style.setProperty('--ornament-cap', '#fde047');
+        root.style.setProperty('--bear-body', '#fef3c7');
+        root.style.setProperty('--bear-inner-ear', '#fed7aa');
+        root.style.setProperty('--santa-hat', '#ef4444');
+        root.style.setProperty('--hat-fur', '#ffffff');
+        root.style.setProperty('--cheeks', '#fca5a5');
+        root.style.setProperty('--snout', '#ffffff');
+        
+        root.style.setProperty('--star-bg', '#fef08a');
+        root.style.setProperty('--berry', '#dc2626');
+
+        root.style.setProperty('--ginger-body', '#d97706');
+        root.style.setProperty('--bowtie', '#16a34a');
+        root.style.setProperty('--gumdrop1', '#dc2626');
+        root.style.setProperty('--gumdrop2', '#2563eb');
+
+        root.style.setProperty('--cat-body', '#f1f5f9');
+        root.style.setProperty('--stocking-bg', '#dc2626');
+        root.style.setProperty('--stocking-patch', '#16a34a');
+
+        btnColored.className = 'px-3 py-1.5 rounded-lg font-bold border transition-all bg-emerald-600 text-white border-emerald-600 shadow-sm';
+        btnBw.className = 'px-3 py-1.5 rounded-lg font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition-all';
+      } else {
+        root.style.setProperty('--bauble-bg', '#ffffff');
+        root.style.setProperty('--ornament-cap', '#ffffff');
+        root.style.setProperty('--bear-body', '#ffffff');
+        root.style.setProperty('--bear-inner-ear', '#ffffff');
+        root.style.setProperty('--santa-hat', '#ffffff');
+        root.style.setProperty('--hat-fur', '#ffffff');
+        root.style.setProperty('--cheeks', '#ffffff');
+        root.style.setProperty('--snout', '#ffffff');
+        
+        root.style.setProperty('--star-bg', '#ffffff');
+        root.style.setProperty('--berry', '#ffffff');
+
+        root.style.setProperty('--ginger-body', '#ffffff');
+        root.style.setProperty('--bowtie', '#ffffff');
+        root.style.setProperty('--gumdrop1', '#ffffff');
+        root.style.setProperty('--gumdrop2', '#ffffff');
+
+        root.style.setProperty('--cat-body', '#ffffff');
+        root.style.setProperty('--stocking-bg', '#ffffff');
+        root.style.setProperty('--stocking-patch', '#ffffff');
+
+        btnBw.className = 'px-3 py-1.5 rounded-lg font-bold border transition-all bg-emerald-600 text-white border-emerald-600 shadow-sm';
+        btnColored.className = 'px-3 py-1.5 rounded-lg font-bold border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 transition-all';
+      }
+    }
+    // Default to B&W coloring mode
+    setMode('bw');
+  </script>
+</body>
+</html>
